@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="angularjsNodejsTutorial">
+<head>
+    <title>Movie Recommendation</title>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+        <script src="javascripts/app.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- Custom styles for this template-->
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+    <header></header>
+    <div class="container">
+    <h1>Movie Recommendation</h1>
+        <div ng-controller="myController">
+            <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search"></span> Please enter a people id:
+                <input name="peopleId" ng-model="peopleId" value="">
+                <button type="button" ng-click="Submit()" class="button">Submit</button>
+            </p>
+        <table border="0" cellpadding="10" cellspacing="1" width="500" align="center"> 
+            <tr> 
+            <td> people_id </td>
+            <td> primaryName </td>
+            <td> birthYear </td>
+            <td> deathYear </td>
+            <td> primaryProfession </td>
+            <td> gender </td>
+            <tr ng-repeat="x in data"> 
+            <td> {{x.people_id}} </td>
+            <td> {{x.primaryName}} </td>
+            <td> {{x.birthYear}} </td>
+            <td> {{x.deathYear}} </td>
+            <td> {{x.primaryProfession}} </td>
+            <td> {{x.gender}} </td>
+            </tr>
+        </table>
+</div>
+    
+
+</body>
+</html>
