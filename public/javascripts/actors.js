@@ -1,9 +1,9 @@
 var app = angular.module('actorPage', []);
 app.controller('actorController', function ($scope, $http) {
     $scope.message = "";
+    $scope.sexes = ['male', 'female'];
     $scope.Submit = function () {
-        console.log($scope.actorName);
-        var request = $http.get('/getActors/' + $scope.actorName +'/'+$scope.actorSex);
+        var request = $http.get('actors/getActors/' + $scope.actorName +'/'+$scope.actorSex);
         request.success(function (data) {
             $scope.data = data;
         });

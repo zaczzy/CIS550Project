@@ -14,11 +14,30 @@ router.get('/', function (req, res) {
 router.get('/getActors/:actorName/:actorSex', function (req, res) {
     var actorName = req.params.actorName;
     var actorSex = req.params.actorSex;
-    MongoClient.connect(uri, function(err, db) {
+    MongoClient.connect(uri, function (err, db) {
         assert.equal(null, err);
-        db.collection(actorSex).find()
+        if (actorName === "undefined") {
+            db.db('actors').collection(actorSex).find({}).limit(10).toArray(function (mongoError, objects) {
+                console.log("return all actors");
+                assert.equal(null, mongoError);
+                if(objects.length){
+                    res.json(objects)
+                } else {
+                    console.log('No document is found');
+                }
+            })
+        } else {
+            db.db('actors').collection(actorSex).find({Name: actorName}).toArray(function (mongoError, objects) {
+                console.log('return actor', actorName);
+                assert.equal(null, mongoError);
+                if(objects.length){
+                    res.json(objects)
+                } else {
+                    console.log('No document is found');
+                }
+            })
+        }
     });
-    res.err("Not implemented!")
 });
 
 module.exports = router;

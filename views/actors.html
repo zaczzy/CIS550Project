@@ -5,6 +5,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
     <script src="javascripts/actors.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
@@ -12,14 +15,10 @@
 <header></header>
 <div class="container">
     <div ng-controller="actorController">
-        <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search">Search By Name</span>
-            <input name="actorName" ng-model="actorName" value="">
-            <select ng-model="actorSex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <button type="button" ng-click="Submit()" class="button">Submit</button>
-        </p>
+        <span aria-hidden="true" class="glyphicon text-primary glyphicon-search">Search By Name</span>
+        <input name="actorName" ng-model="actorName" value="" placeholder="name of actor"/>
+        <select ng-model="actorSex" ng-options="sex for sex in sexes"  ng-init="actorSex=sexes[0]"></select>
+        <button type="button" ng-click="Submit()" class="button">Submit</button>
         <div>
             <p ng-repeat="actor in data">
                 {{actor}}
@@ -28,6 +27,5 @@
     </div>
 
 </div>
-<a href="/getActors" > Query Actors</a>
 </body>
 </html>
