@@ -14,25 +14,17 @@
     <div ng-controller="actorController">
         <p><span aria-hidden="true" class="glyphicon text-primary glyphicon-search">Search By Name</span>
             <input name="actorName" ng-model="actorName" value="">
+            <select ng-model="actorSex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
             <button type="button" ng-click="Submit()" class="button">Submit</button>
         </p>
-        <table border="0" cellpadding="10" cellspacing="1" width="500" align="center">
-            <!--<tr>-->
-                <!--<td> people_id</td>-->
-                <!--<td> primaryName</td>-->
-                <!--<td> birthYear</td>-->
-                <!--<td> deathYear</td>-->
-                <!--<td> primaryProfession</td>-->
-                <!--<td> gender</td>-->
-            <!--<tr ng-repeat="x in data">-->
-                <!--<td> {{x.people_id}}</td>-->
-                <!--<td> {{x.primaryName}}</td>-->
-                <!--<td> {{x.birthYear}}</td>-->
-                <!--<td> {{x.deathYear}}</td>-->
-                <!--<td> {{x.primaryProfession}}</td>-->
-                <!--<td> {{x.gender}}</td>-->
-            <!--</tr>-->
-        </table>
+        <div>
+            <p ng-repeat="actor in data">
+                {{actor}}
+            </p>
+        </div>
     </div>
 
 </div>
